@@ -18,14 +18,16 @@ from rest_framework.filters import OrderingFilter, SearchFilter
 
 class RestaurantListView(ListAPIView):
     queryset = Restaurant.objects.all()
+    
     serializer_class = RestaurantListSerializer
     permission_classes = [AllowAny,]
     filter_backends = [OrderingFilter, SearchFilter,]
-    search_fields = ['name', 'description', 'owner__username']
+    search_fields = ['name', 'description', 'owner__username' ]
 
 
 class RestaurantDetailView(RetrieveAPIView):
     queryset = Restaurant.objects.all()
+
     serializer_class = RestaurantDetailSerializer
     lookup_field = 'id'
     lookup_url_kwarg = 'restaurant_id'
